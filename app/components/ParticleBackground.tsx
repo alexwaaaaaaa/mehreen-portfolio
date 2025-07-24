@@ -37,9 +37,9 @@ const ParticleBackground = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Create particles
+    // Create particles (reduced count for better performance)
     const particles: Particle[] = [];
-    const particleCount = 70;
+    const particleCount = window.innerWidth < 768 ? 30 : 50;
     const darkColors = ['#a855f7', '#3b82f6', '#6366f1', '#8b5cf6'];
     const lightColors = ['#6366f1', '#8b5cf6', '#6600cc'];
     const colors = theme === 'dark' ? darkColors : lightColors;
@@ -55,7 +55,8 @@ const ParticleBackground = () => {
       });
     }
     
-    // Animation loop
+    // Animation loop with performance optimization
+    let animationId: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -99,13 +100,16 @@ const ParticleBackground = () => {
         }
       }
       
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     };
     
     animate();
     
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
     };
   }, [theme]);
   

@@ -1,13 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 
 import Navbar from './components/Navbar';
-import ParticleBackground from './components/ParticleBackground';
-import ProjectModal from './components/ProjectModal';
 import SkillIcon from './components/SkillIcon';
+import LoadingSpinner from './components/LoadingSpinner';
 import { rippleEffect } from './utils/animation';
+
+// Lazy load heavy components
+const ParticleBackground = lazy(() => import('./components/ParticleBackground'));
+const ProjectModal = lazy(() => import('./components/ProjectModal'));
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -97,7 +100,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-transparent">
       <Navbar />
-      <ParticleBackground />
+      <Suspense fallback={<div className="fixed inset-0 bg-[var(--background)] -z-10" />}>
+        <ParticleBackground />
+      </Suspense>
 
       {/* Hero Section */}
       <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden px-4">
@@ -1115,11 +1120,13 @@ export default function Home() {
       {/* Project Modal */}
       {
         selectedProject && (
-          <ProjectModal
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-            project={selectedProject}
-          />
+          <Suspense fallback={<LoadingSpinner />}>
+            <ProjectModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              project={selectedProject}
+            />
+          </Suspense>
         )
       }
     </main>
