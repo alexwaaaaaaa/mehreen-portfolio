@@ -406,7 +406,7 @@ export default function Home() {
                       </div>
                     </div>
                     <p className="text-[var(--text-muted)] leading-relaxed">
-                      Completed diploma program with strong foundation in engineering principles, technical drawing, project management, and analytical problem-solving. This background provided valuable engineering mindset and systematic approach to complex problems.
+                      Completed three-year diploma program with comprehensive knowledge in civil engineering fundamentals, construction technology, structural design, and project planning. Gained practical experience in surveying, building materials, and construction management which developed strong analytical and problem-solving skills.
                     </p>
                   </div>
                 </div>
@@ -443,7 +443,7 @@ export default function Home() {
                       </div>
                     </div>
                     <p className="text-[var(--text-muted)] leading-relaxed">
-                      Completed secondary education with strong academic foundation in mathematics, science, and English. Built fundamental analytical and problem-solving skills that formed the base for future technical education.
+                      Successfully completed matriculation with excellent grades in core subjects including Mathematics, Science, Social Studies, and English. Developed strong foundational knowledge and study habits that prepared me for advanced technical education and engineering studies.
                     </p>
                   </div>
                 </div>
