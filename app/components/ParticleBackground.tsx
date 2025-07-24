@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from './theme/ThemeProvider';
 
 interface Particle {
@@ -15,6 +15,11 @@ interface Particle {
 const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -104,6 +109,16 @@ const ParticleBackground = () => {
     };
   }, [theme]);
   
+  if (!mounted) {
+    return (
+      <>
+        <div className="fixed top-0 left-0 w-full h-full -z-20 transition-colors duration-500 bg-[var(--background)]"></div>
+        <div className="fixed top-0 left-0 w-full h-full -z-20 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_top_right,_var(--bg-gradient-from),_transparent_70%)]"></div>
+        <div className="fixed top-0 left-0 w-full h-full -z-20 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_bottom_left,_var(--bg-gradient-to),_transparent_70%)]"></div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full -z-20 transition-colors duration-500 bg-[var(--background)]"></div>

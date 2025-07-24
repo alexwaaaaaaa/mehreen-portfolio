@@ -94,8 +94,6 @@ export default function Home() {
     setIsModalOpen(true);
   };
 
-  if (!mounted) return null;
-
   return (
     <main className="min-h-screen bg-transparent">
       <Navbar />
@@ -1109,7 +1107,7 @@ export default function Home() {
           </div>
 
           <div className="mt-8 pt-8 border-t border-[var(--card-border)] text-center">
-            <p className="text-[var(--text-muted)]">© {new Date().getFullYear()} Mehreen. All rights reserved.</p>
+            <p className="text-[var(--text-muted)]">© 2024 Mehreen. All rights reserved.</p>
           </div>
         </div>
       </footer>
