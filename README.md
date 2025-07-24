@@ -1,95 +1,71 @@
 # Mehreen's Portfolio Website
 
-A highly interactive and visually appealing 3D portfolio website built with Next.js, Tailwind CSS, and Framer Motion, showcasing both frontend development and data analysis skills.
+A modern, responsive portfolio website built with Next.js, featuring neon effects, smooth animations, and a clean design.
 
 ## Features
 
-- Dark mode with soft neon highlights (blue for frontend, green for data analysis)
-- Full-screen hero section with animated particle background
-- Section-wise smooth scroll with 3D-like transitions
-- Floating glowing buttons with hover & click animations
-- Animated timeline for education and experience
-- Projects grid with hover image zoom-in and modal pop-up
-- Custom cursor effect and scroll-based animations
-- Separate sections for frontend and data analysis projects
-- Interactive skill categories with visual differentiation
+- 🎨 Modern neon-themed design
+- 📱 Fully responsive layout
+- ⚡ Built with Next.js 14 and TypeScript
+- 🎭 Smooth animations with Framer Motion
+- 🎯 Interactive particle background
+- 📧 Contact form integration
+- 🌙 Dark/Light theme toggle
+- 📊 Skills showcase with icons
+- 🎓 Education timeline
+- 💼 Project portfolio with modal details
 
-## Technologies Used
+## Tech Stack
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Framer Motion
+- **Framework:** Next.js 14
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Icons:** Heroicons & Custom SVGs
+
+## Sections
+
+- **Hero:** Welcome section with animated introduction
+- **About:** Personal information and journey
+- **Education:** Academic background timeline
+- **Skills:** Technical skills with interactive icons
+- **Projects:** Portfolio of work with detailed modals
+- **Contact:** Contact information and form
 
 ## Getting Started
 
-### Prerequisites
+1. Clone the repository
+```bash
+git clone https://github.com/mehreen-siddiqui/portfolio-website.git
+cd portfolio-website
+```
 
-- Node.js (v18 or higher)
-- npm or yarn
+2. Install dependencies
+```bash
+npm install
+```
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-   cd portfolio-website
-   ```
-
-3. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-### Development
-
-Run the development server:
+3. Run the development server
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### Build
+## Deployment
 
-Build the project for production:
-```bash
-npm run build
-# or
-yarn build
-```
+This project is optimized for deployment on Netlify:
 
-### Start Production Server
+1. Build the project: `npm run build`
+2. Deploy the `out` folder to Netlify
 
-Start the production server:
-```bash
-npm run start
-# or
-yarn start
-```
+## Contact
 
-## Project Structure
-
-- `/app` - Next.js app directory
-  - `/components` - Reusable UI components
-  - `/globals.css` - Global styles
-  - `/layout.tsx` - Root layout component
-  - `/page.tsx` - Main page component
-
-## Customization
-
-- Edit the content in `app/page.tsx` to update your personal information
-- Modify the styles in `app/globals.css` to change the color scheme
-- Add or remove sections as needed
+- **Email:** mehreensiddiqui740@gmail.com
+- **Phone:** +91 8512030184
+- **LinkedIn:** [Mehreen Siddiqui](https://www.linkedin.com/in/mehreen-siddiqui-4a4057250/)
+- **Location:** New Delhi, India
 
 ## License
 
-This project is licensed under the MIT License.
+This project is open source and available under the [MIT License](LICENSE).
