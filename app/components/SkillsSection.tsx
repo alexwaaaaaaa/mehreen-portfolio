@@ -48,7 +48,9 @@ const SkillsSection = () => {
       color: 'gray-500',
       logo: (
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#000000">
-          <path d="M11.5725 0c-.1763 0-.3098.0013-.3584.0067-.0516.0053-.2159.021-.3636.0328-3.4088.3073-6.6017 2.1463-8.624 4.9728C1.1004 6.584.3802 8.3666.1082 10.255c-.0962.659-.108.8537-.108 1.7474s.012 1.0884.108 1.7476c.652 4.506 3.8591 8.2919 8.2087 9.6945.7789.2511 1.6.4223 2.5337.5255.3636.04 1.9354.04 2.299 0 1.6117-.1783 2.9772-.577 4.3237-1.2643.2065-.1056.2464-.1337.2183-.1573-.0188-.0139-.8987-1.1938-1.9543-2.62l-1.919-2.592-2.4047-3.5583c-1.3231-1.9564-2.4117-3.556-2.4211-3.556-.0094-.0026-.0187 1.5787-.0235 3.509-.0067 3.3802-.0093 3.5162-.0516 3.596-.061.115-.108.1618-.2064.2134-.075.0374-.1408.0445-.5429.0445h-.4570l-.0803-.0516c-.0516-.0336-.0939-.0822-.1213-.1201-.0146-.0212-.0094-1.3157.0188-4.2857l.0375-4.2488.0563-.0687c.0188-.0235.0375-.0469.0562-.0618.0516-.0327.1062-.0618.1212-.0618.0084-.0013 2.4211 3.6252 5.3544 8.0595l5.3388 8.0546 2.1952-1.4454c1.2085-.7973 2.2002-1.4193 2.2002-1.3823 0 .0141-4.2324-6.3934-9.4259-14.2559L14.7765 1.2946l-.0939-.0235c-.0516-.0139-.1875-.0235-.3022-.0235h-.2346z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 7.34c.496 1.005.78 2.266.78 3.781 0 .893-.094 1.748-.272 2.557-.178.808-.438 1.569-.78 2.274-.342.705-.777 1.349-1.302 1.924-.525.575-1.143 1.074-1.847 1.493-.704.418-1.497.743-2.378.97-.881.228-1.861.342-2.941.342-1.08 0-2.06-.114-2.941-.342-.881-.227-1.674-.552-2.378-.97-.704-.419-1.322-.918-1.847-1.493-.525-.575-.96-1.219-1.302-1.924-.342-.705-.602-1.466-.78-2.274C6.422 13.748 6.328 12.893 6.328 12c0-1.515.284-2.776.78-3.781.496-1.005 1.155-1.847 1.976-2.513.821-.666 1.784-1.161 2.888-1.487C11.075 4.892 12.24 4.73 13.448 4.73c1.208 0 2.373.162 3.476.489 1.104.326 2.067.821 2.888 1.487.821.666 1.48 1.508 1.976 2.513z"/>
+          <path d="M8.5 8.5L15.5 15.5M8.5 15.5L15.5 8.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M12 6v12M6 12h12" stroke="white" strokeWidth="1" strokeLinecap="round"/>
         </svg>
       )
     },
@@ -95,9 +97,12 @@ const SkillsSection = () => {
       name: 'SQL', 
       color: 'blue-600',
       logo: (
-        <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-xs">
-          SQL
-        </div>
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#336791">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 16H8v-2h2v2zm0-3H8V9h2v4zm6 3h-2v-2h2v2zm0-3h-2V9h2v4z"/>
+          <rect x="6" y="6" width="12" height="2" fill="#336791"/>
+          <rect x="6" y="16" width="12" height="2" fill="#336791"/>
+          <path d="M8 10h8v4H8z" fill="none" stroke="#336791" strokeWidth="1"/>
+        </svg>
       )
     },
     { 
@@ -308,7 +313,7 @@ const SkillsSection = () => {
     <>
       {/* Enhanced Toggle Switch */}
       <motion.div
-        className="flex justify-center mb-12 gap-4"
+        className="flex justify-center mb-12 gap-2 sm:gap-4 px-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -332,7 +337,7 @@ const SkillsSection = () => {
           
           {/* Frontend Button */}
           <motion.button
-            className={`relative z-10 flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
               activeTab === 'frontend'
                 ? 'text-white'
                 : 'text-gray-400 hover:text-white'
@@ -341,10 +346,11 @@ const SkillsSection = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setActiveTab('frontend')}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
-            Frontend
+            <span className="hidden sm:inline">Frontend</span>
+            <span className="sm:hidden">Front</span>
           </motion.button>
         </motion.div>
 
@@ -366,7 +372,7 @@ const SkillsSection = () => {
           
           {/* Data Analysis Button */}
           <motion.button
-            className={`relative z-10 flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
               activeTab === 'data'
                 ? 'text-white'
                 : 'text-gray-400 hover:text-white'
@@ -375,10 +381,11 @@ const SkillsSection = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setActiveTab('data')}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            Data Analysis
+            <span className="hidden sm:inline">Data Analysis</span>
+            <span className="sm:hidden">Data</span>
           </motion.button>
         </motion.div>
 
@@ -400,7 +407,7 @@ const SkillsSection = () => {
           
           {/* Tools Button */}
           <motion.button
-            className={`relative z-10 flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
               activeTab === 'tools'
                 ? 'text-white'
                 : 'text-gray-400 hover:text-white'
@@ -409,7 +416,7 @@ const SkillsSection = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setActiveTab('tools')}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
