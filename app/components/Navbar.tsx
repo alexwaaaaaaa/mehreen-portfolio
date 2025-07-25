@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -137,8 +137,8 @@ const Navbar = () => {
               >
                 {/* Glowing Border Effect */}
                 <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${isActive
-                    ? `bg-gradient-to-r ${linkColors.bg} p-[2px] shadow-lg ${linkColors.shadow} shadow-2xl`
-                    : 'bg-gray-700/30 p-[1px] hover:bg-gray-600/50'
+                  ? `bg-gradient-to-r ${linkColors.bg} p-[2px] shadow-lg ${linkColors.shadow} shadow-2xl`
+                  : 'bg-gray-700/30 p-[1px] hover:bg-gray-600/50'
                   }`}>
                   <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
                 </div>
@@ -147,8 +147,8 @@ const Navbar = () => {
                 <motion.a
                   href={link.href}
                   className={`relative z-10 flex items-center justify-center px-6 py-3 rounded-2xl text-sm font-medium transition-all duration-300 ${isActive
-                      ? 'text-white'
-                      : 'text-gray-400 hover:text-white'
+                    ? 'text-white'
+                    : 'text-gray-400 hover:text-white'
                     }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

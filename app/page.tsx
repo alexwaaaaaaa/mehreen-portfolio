@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useState, lazy, Suspense } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import Navbar from './components/Navbar';
-import SkillIcon from './components/SkillIcon';
 import LoadingSpinner from './components/LoadingSpinner';
 import SkillsSection from './components/SkillsSection';
 import { rippleEffect } from './utils/animation';
@@ -14,14 +13,12 @@ const ParticleBackground = lazy(() => import('./components/ParticleBackground'))
 const ProjectModal = lazy(() => import('./components/ProjectModal'));
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
   // For typewriter effect
   const [, setText] = useState('');
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const phrases = ['Frontend Developer', 'Data Analyst', 'Problem Solver', 'Tech Enthusiast'];
-    setMounted(true);
 
     // Initialize intersection observer for fade-in animations
     const observer = new IntersectionObserver(
@@ -147,7 +144,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-[var(--cyan)] text-lg font-mono">Hello World, I'm</p>
+              <p className="text-[var(--cyan)] text-lg font-mono">Hello World, I&apos;m</p>
             </motion.div>
 
             {/* Name */}
@@ -314,7 +311,7 @@ export default function Home() {
               </div>
 
               <p className="text-gray-300 text-sm leading-relaxed">
-                I'm passionate about creating innovative solutions that make a difference. Whether it's building beautiful user interfaces or analyzing complex data patterns, I bring dedication and creativity to every project.
+                I&apos;m passionate about creating innovative solutions that make a difference. Whether it&apos;s building beautiful user interfaces or analyzing complex data patterns, I bring dedication and creativity to every project.
               </p>
             </motion.div>
 
@@ -337,7 +334,7 @@ export default function Home() {
               </div>
 
               <p className="text-white mb-4 leading-relaxed text-sm">
-                I'm Mehreen, a passionate Frontend Developer and Data Analyst with a B.Tech degree from Lloyd Institute of Engineering & Technology (2021-2024).
+                I&apos;m Mehreen, a passionate Frontend Developer and Data Analyst with a B.Tech degree from Lloyd Institute of Engineering & Technology (2021-2024).
               </p>
 
               <p className="text-pink-200 mb-4 leading-relaxed text-sm">
@@ -345,7 +342,7 @@ export default function Home() {
               </p>
 
               <p className="text-orange-200 text-sm leading-relaxed">
-                Currently pursuing my final year, I'm eager to apply my skills in real-world projects and contribute to innovative solutions that make a positive impact.
+                Currently pursuing my final year, I&apos;m eager to apply my skills in real-world projects and contribute to innovative solutions that make a positive impact.
               </p>
             </motion.div>
           </div>
