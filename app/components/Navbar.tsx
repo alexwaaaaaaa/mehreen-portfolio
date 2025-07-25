@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import ThemeToggle from './theme/ThemeToggle';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -15,6 +14,7 @@ const Navbar = () => {
         setScrolled(true);
       } else {
         setScrolled(false);
+
       }
 
       // Track active section
@@ -42,67 +42,121 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
-    { name: 'Education', href: '#education' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#hero', id: 'hero', color: 'cyan' },
+    { name: 'About', href: '#about', id: 'about', color: 'blue' },
+    { name: 'Education', href: '#education', id: 'education', color: 'green' },
+    { name: 'Skills', href: '#skills', id: 'skills', color: 'purple' },
+    { name: 'Projects', href: '#projects', id: 'projects', color: 'orange' },
+    { name: 'Contact', href: '#contact', id: 'contact', color: 'pink' },
   ];
 
+  // Get dynamic colors based on active section
+  const getSectionColors = (section: string) => {
+    switch (section) {
+      case 'hero':
+        return {
+          bg: 'from-cyan-400 via-cyan-500 to-blue-600',
+          shadow: 'shadow-cyan-500/40',
+          text: 'text-cyan-400'
+        };
+      case 'about':
+        return {
+          bg: 'from-blue-400 via-blue-500 to-indigo-600',
+          shadow: 'shadow-blue-500/40',
+          text: 'text-blue-400'
+        };
+      case 'education':
+        return {
+          bg: 'from-green-400 via-green-500 to-emerald-600',
+          shadow: 'shadow-green-500/40',
+          text: 'text-green-400'
+        };
+      case 'skills':
+        return {
+          bg: 'from-purple-400 via-purple-500 to-pink-600',
+          shadow: 'shadow-purple-500/40',
+          text: 'text-purple-400'
+        };
+      case 'projects':
+        return {
+          bg: 'from-orange-400 via-orange-500 to-red-600',
+          shadow: 'shadow-orange-500/40',
+          text: 'text-orange-400'
+        };
+      case 'contact':
+        return {
+          bg: 'from-pink-400 via-pink-500 to-rose-600',
+          shadow: 'shadow-pink-500/40',
+          text: 'text-pink-400'
+        };
+      default:
+        return {
+          bg: 'from-cyan-400 via-cyan-500 to-blue-600',
+          shadow: 'shadow-cyan-500/40',
+          text: 'text-cyan-400'
+        };
+    }
+  };
+
+  const currentColors = getSectionColors(activeSection);
+
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a101f]/80 backdrop-blur-md py-3' : 'bg-transparent py-5'
-        }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 md:px-8 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full z-50 py-4 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Logo */}
         <motion.div
           className="flex items-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-0.5 shadow-[0_0_20px_rgba(59,130,246,0.8)] hover:shadow-[0_0_30px_rgba(59,130,246,1)] transition-all duration-300">
-            <div className="w-full h-full rounded-2xl bg-[var(--card-bg-primary)] flex items-center justify-center border border-blue-500/30">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/30 to-blue-600/30 flex items-center justify-center shadow-[inset_0_0_10px_rgba(59,130,246,0.3)]">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-[var(--neon-purple)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-            </div>
-          </div>
           <a
             href="#hero"
-            className="text-xl font-bold text-white hover:text-blue-400 transition-all duration-300 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] hover:drop-shadow-[0_0_12px_rgba(59,130,246,1)]"
+            className={`text-xl font-bold text-white hover:${currentColors.text} transition-all duration-300`}
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
-            Mehreen
+            Mehreen <span className={currentColors.text}>Siddiqui</span>
           </a>
         </motion.div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center">
-          <div className="bg-[#1a1f35]/30 backdrop-blur-md rounded-full px-1 py-1 flex items-center border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.3)]">
-            {navLinks.map((link, index) => {
-              const isActive = activeSection === link.href.replace('#', '');
-              return (
+        <div className="hidden md:flex items-center gap-4">
+          {navLinks.map((link, index) => {
+            const isActive = activeSection === link.id;
+            const linkColors = getSectionColors(link.id);
+            return (
+              <motion.div
+                key={link.name}
+                className="relative"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+              >
+                {/* Glowing Border Effect */}
+                <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${isActive
+                    ? `bg-gradient-to-r ${linkColors.bg} p-[2px] shadow-lg ${linkColors.shadow} shadow-2xl`
+                    : 'bg-gray-700/30 p-[1px] hover:bg-gray-600/50'
+                  }`}>
+                  <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
+                </div>
+
+                {/* Navigation Link */}
                 <motion.a
-                  key={link.name}
                   href={link.href}
-                  className={`transition-all duration-300 relative ${isActive ? 'neon-button-active' : 'neon-button'
-                    } ${link.name === 'Contact' ? 'px-6 py-2 mx-0' : 'px-4 py-2 mx-0'} text-white`}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow: "0 0 25px rgba(59, 130, 246, 0.9), 0 0 5px rgba(59, 130, 246, 1)"
-                  }}
+                  className={`relative z-10 flex items-center justify-center px-6 py-3 rounded-2xl text-sm font-medium transition-all duration-300 ${isActive
+                      ? 'text-white'
+                      : 'text-gray-400 hover:text-white'
+                    }`}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={(e) => {
                     e.preventDefault();
-                    const targetElement = document.querySelector(link.href) as HTMLElement;
+                    const targetElement = document.getElementById(link.id);
                     if (targetElement) {
-                      const offsetTop = targetElement.offsetTop - 80; // Account for navbar height
+                      const offsetTop = targetElement.offsetTop - 80;
                       window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -111,26 +165,22 @@ const Navbar = () => {
                   }}
                 >
                   {link.name}
-                  {/* Active state is now handled by CSS classes */}
-                  {/* No additional div needed for Contact as the neon effect is applied directly */}
                 </motion.a>
-              );
-            })}
-          </div>
-          <ThemeToggle />
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-[var(--foreground)]"
+          className="md:hidden text-white p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
             className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
             {mobileMenuOpen ? (
               <path
@@ -154,27 +204,30 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <motion.div
-          className="md:hidden dark:bg-black/95 bg-white/95 backdrop-blur-md"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden mt-4 bg-gray-800/95 backdrop-blur-md rounded-2xl mx-4 border border-gray-700/50 shadow-xl"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="flex flex-col px-4 py-4 space-y-2">
+          <div className="flex flex-col p-4 space-y-2">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.replace('#', '');
+              const isActive = activeSection === link.id;
+              const linkColors = getSectionColors(link.id);
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`transition-all duration-300 ${isActive ? 'neon-button-active' : 'neon-button'
-                    } py-2 px-6 text-center my-1 text-white`}
+                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${isActive
+                    ? `bg-gradient-to-r ${linkColors.bg} text-white shadow-lg ${linkColors.shadow}`
+                    : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                    }`}
                   onClick={(e) => {
                     e.preventDefault();
                     setMobileMenuOpen(false);
-                    const targetElement = document.querySelector(link.href) as HTMLElement;
+                    const targetElement = document.getElementById(link.id);
                     if (targetElement) {
-                      const offsetTop = targetElement.offsetTop - 80; // Account for navbar height
+                      const offsetTop = targetElement.offsetTop - 80;
                       window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -186,9 +239,6 @@ const Navbar = () => {
                 </a>
               );
             })}
-            <div className="flex justify-center pt-2">
-              <ThemeToggle />
-            </div>
           </div>
         </motion.div>
       )}

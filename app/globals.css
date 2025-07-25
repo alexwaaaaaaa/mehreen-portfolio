@@ -1,37 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  /* Common colors */
-  --neon-blue: #00eeff;
-  --neon-green: #00ff8c;
-  --neon-purple: #a855f7;
-  --accent-glow: 0 0 10px var(--neon-purple);
+  /* Exact Theme Colors from Screenshot */
+  --background: #1a1f2e;
+  --foreground: #ffffff;
+  --card-bg: rgba(45, 55, 72, 0.6);
+  --card-bg-primary: rgba(45, 55, 72, 0.8);
+  --card-bg-secondary: rgba(66, 32, 87, 0.3);
+  --border: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --text-muted: #a0aec0;
+  --text-secondary: #718096;
+  
+  /* Accent Colors */
+  --primary: #4299e1;
+  --primary-dark: #2b6cb0;
+  --secondary: #9f7aea;
+  --accent: #38b2ac;
+  --cyan: #00d4ff;
+  --purple: #9f7aea;
+  --pink: #ed64a6;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #4299e1, #9f7aea);
+  --gradient-secondary: linear-gradient(135deg, #38b2ac, #4299e1);
+  --gradient-accent: linear-gradient(135deg, #9f7aea, #ed64a6);
+  --gradient-text: linear-gradient(135deg, #00d4ff, #9f7aea);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(159, 122, 234, 0.4);
+  --shadow-cyan: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
-/* Light mode is default */
-:root {
+/* Light mode override (if needed) */
+.light {
   --background: #ffffff;
-  --foreground: #171717;
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --border: #e0e0e0;
-  --text-muted: #6b7280;
-  --bg-gradient-from: rgba(168, 85, 247, 0.05);
-  --bg-gradient-to: rgba(0, 238, 255, 0.05);
-  --card-bg-primary: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode */
-.dark {
-  --background: #0a101f;
-  --foreground: #ededed;
-  --card-bg: rgba(26, 31, 53, 0.8);
-  --border: #374151;
-  --text-muted: #9ca3af;
-  --bg-gradient-from: rgba(168, 85, 247, 0.1);
-  --bg-gradient-to: rgba(0, 238, 255, 0.1);
-  --card-bg-primary: rgba(26, 31, 53, 0.8);
-  --card-border: rgba(255, 255, 255, 0.1);
+  --foreground: #0f0f23;
+  --card-bg: rgba(0, 0, 0, 0.05);
+  --card-bg-primary: rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.1);
+  --card-border: rgba(0, 0, 0, 0.15);
+  --text-muted: #71717a;
+  --text-secondary: #a1a1aa;
 }
 
 @theme inline {
@@ -50,6 +64,25 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
 }
 
 /* Performance optimizations */
