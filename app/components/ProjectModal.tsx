@@ -81,7 +81,7 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                 {project.image ? (
                   <div 
                     className="absolute inset-0 bg-cover bg-center" 
-                    style={{ backgroundImage: `url('${project.image}')` }}
+                    style={{ backgroundImage: `url(${project.image})` }}
                   />
                 ) : null}
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent flex items-center justify-center">

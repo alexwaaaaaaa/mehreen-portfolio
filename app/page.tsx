@@ -574,7 +574,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 to-blue-700/20">
-                  <div className="absolute inset-0 bg-[url('/images/data-planning.jpg')] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-[url(/images/data-planning.jpg)] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
@@ -648,7 +648,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-700/20">
-                  <div className="absolute inset-0 bg-[url('/images/code-editor.jpg')] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-[url(/images/code-editor.jpg)] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
@@ -722,7 +722,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 to-blue-700/20">
-                  <div className="absolute inset-0 bg-[url('/images/analytics-dashboard.jpg')] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-[url(/images/analytics-dashboard.jpg)] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
@@ -798,7 +798,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 to-blue-700/20">
-                  <div className="absolute inset-0 bg-[url('/images/business-dashboard.jpg')] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-[url(/images/business-dashboard.jpg)] bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
