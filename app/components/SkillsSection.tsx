@@ -329,8 +329,8 @@ const SkillsSection = () => {
           {/* Glowing Border Effect */}
           <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
             activeTab === 'frontend'
-              ? 'bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600 p-[2px] shadow-lg shadow-blue-500/40 shadow-2xl'
-              : 'bg-gray-700/30 p-[1px] hover:bg-gray-600/50'
+              ? 'bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600 p-[2px] shadow-lg shadow-blue-500/60 md:shadow-blue-500/40 shadow-2xl'
+              : 'bg-gray-700/50 md:bg-gray-700/30 p-[1px] md:hover:bg-gray-600/50'
           }`}>
             <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
           </div>
@@ -364,8 +364,8 @@ const SkillsSection = () => {
           {/* Glowing Border Effect */}
           <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
             activeTab === 'data'
-              ? 'bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 p-[2px] shadow-lg shadow-green-500/40 shadow-2xl'
-              : 'bg-gray-700/30 p-[1px] hover:bg-gray-600/50'
+              ? 'bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 p-[2px] shadow-lg shadow-green-500/60 md:shadow-green-500/40 shadow-2xl'
+              : 'bg-gray-700/50 md:bg-gray-700/30 p-[1px] md:hover:bg-gray-600/50'
           }`}>
             <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
           </div>
@@ -399,8 +399,8 @@ const SkillsSection = () => {
           {/* Glowing Border Effect */}
           <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
             activeTab === 'tools'
-              ? 'bg-gradient-to-r from-purple-400 via-purple-500 to-pink-600 p-[2px] shadow-lg shadow-purple-500/40 shadow-2xl'
-              : 'bg-gray-700/30 p-[1px] hover:bg-gray-600/50'
+              ? 'bg-gradient-to-r from-purple-400 via-purple-500 to-pink-600 p-[2px] shadow-lg shadow-purple-500/60 md:shadow-purple-500/40 shadow-2xl'
+              : 'bg-gray-700/50 md:bg-gray-700/30 p-[1px] md:hover:bg-gray-600/50'
           }`}>
             <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
           </div>

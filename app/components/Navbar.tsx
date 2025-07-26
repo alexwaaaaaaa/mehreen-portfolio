@@ -138,7 +138,7 @@ const Navbar = () => {
                 {/* Glowing Border Effect */}
                 <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${isActive
                   ? `bg-gradient-to-r ${linkColors.bg} p-[2px] shadow-lg ${linkColors.shadow} shadow-2xl`
-                  : 'bg-gray-700/30 p-[1px] hover:bg-gray-600/50'
+                  : 'bg-gray-700/50 md:bg-gray-700/30 p-[1px] md:hover:bg-gray-600/50'
                   }`}>
                   <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
                 </div>

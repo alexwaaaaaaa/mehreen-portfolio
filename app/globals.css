@@ -666,4 +666,80 @@ body {
   .project-button {
     padding: 0.5rem;
   }
+}/* Mobile
+-optimized glowing effects */
+@media (max-width: 768px) {
+  /* Increase shadow opacity and size for mobile */
+  .shadow-blue-500\/40 {
+    --tw-shadow-color: rgb(59 130 246 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  .shadow-green-500\/40 {
+    --tw-shadow-color: rgb(34 197 94 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  .shadow-purple-500\/40 {
+    --tw-shadow-color: rgb(168 85 247 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  .shadow-cyan-500\/40 {
+    --tw-shadow-color: rgb(6 182 212 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  .shadow-orange-500\/40 {
+    --tw-shadow-color: rgb(249 115 22 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  .shadow-red-500\/40 {
+    --tw-shadow-color: rgb(239 68 68 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  .shadow-gray-500\/40 {
+    --tw-shadow-color: rgb(107 114 128 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  .shadow-sky-500\/40 {
+    --tw-shadow-color: rgb(14 165 233 / 0.8);
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  }
+  
+  /* Make inactive elements more visible on mobile */
+  .bg-gray-700\/30 {
+    background-color: rgb(55 65 81 / 0.6);
+  }
+  
+  /* Enhance backdrop blur for mobile */
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px) saturate(180%);
+  }
+}
+
+/* Touch-friendly hover effects for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:shadow-blue-500\/60:hover {
+    --tw-shadow-color: rgb(59 130 246 / 0.9);
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  }
+  
+  .hover\:shadow-green-500\/60:hover {
+    --tw-shadow-color: rgb(34 197 94 / 0.9);
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  }
+  
+  .hover\:shadow-purple-500\/60:hover {
+    --tw-shadow-color: rgb(168 85 247 / 0.9);
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  }
+  
+  .hover\:shadow-cyan-500\/60:hover {
+    --tw-shadow-color: rgb(6 182 212 / 0.9);
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  }
 }
