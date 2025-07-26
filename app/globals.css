@@ -799,19 +799,18 @@ body {
 .preserve-3d {
   transform-style: preserve-3d;
 }
-/* Com
-prehensive Mobile Touch Animation Fix */
+/* MOBILE = DESKTOP: Identical glow effects */
 @media (max-width: 768px) {
-  /* Force persistent glowing animations on mobile */
-  .shadow-lg {
-    animation: mobile-glow-persist 3s ease-in-out infinite !important;
+  /* Remove all mobile-specific animations - use desktop styles exactly */
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl,
+  .bg-gradient-to-r,
+  .bg-gradient-to-br {
+    animation: none !important; /* No mobile-specific animations */
   }
   
-  .bg-gradient-to-r {
-    animation: gradient-pulse 2s ease-in-out infinite alternate !important;
-  }
-  
-  /* Prevent touch from disabling animations */
+  /* Prevent touch from disabling effects but keep desktop behavior */
   * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -819,76 +818,86 @@ prehensive Mobile Touch Animation Fix */
     user-select: none;
   }
   
-  /* Ensure buttons maintain their glow after touch */
+  /* Ensure buttons maintain desktop behavior */
   button, .cursor-pointer {
     touch-action: manipulation;
   }
+}
+
+/* Remove all mobile-specific animations - use desktop behavior *//* Desktop-identical tab glow on mobile */
+@media (max-width: 768px) {
+  /* Keep desktop glow behavior exactly - no mobile modifications */
+  [data-tab] {
+    position: relative;
+  }
   
-  /* Force active tab styles to persist */
-  .tab-active {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.9) !important;
-    color: white !important;
+  /* Remove mobile-specific glow animations - use desktop styles */
+  [data-tab].mobile-button-active,
+  [data-tab].mobile-button-active .absolute {
+    animation: none !important; /* Remove mobile animations */
+    /* Let desktop CSS handle the glow naturally */
   }
   
-  /* Ensure skill cards maintain their glow */
-  .skill-card {
-    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.6) !important;
-    animation: skill-glow 2s ease-in-out infinite alternate !important;
+  /* Prevent touch from interfering with desktop hover/focus states */
+  [data-tab]:active,
+  [data-tab]:focus,
+  [data-tab]:hover {
+    /* Keep desktop behavior */
   }
 }
 
-@keyframes mobile-glow-persist {
-  0%, 100% {
-    filter: drop-shadow(0 0 8px currentColor);
-    box-shadow: 0 0 20px currentColor;
-  }
-  50% {
-    filter: drop-shadow(0 0 12px currentColor);
-    box-shadow: 0 0 30px currentColor;
-  }
-}
-
-@keyframes gradient-pulse {
-  0% {
-    opacity: 0.9;
-    filter: brightness(1);
-  }
-  100% {
-    opacity: 1;
-    filter: brightness(1.1);
-  }
-}
-
-@keyframes skill-glow {
-  0% {
-    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.6);
-  }
-  100% {
-    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.8);
-  }
-}
-
-/* Mobile-specific touch event handling */
+/* Touch devices use desktop glow behavior exactly */
 @media (hover: none) and (pointer: coarse) {
-  /* Override any touch states that might disable animations */
-  *:active, *:focus, *:hover {
-    animation-play-state: running !important;
-    box-shadow: inherit !important;
+  /* Only prevent touch highlight, keep desktop glow */
+  * {
+    -webkit-tap-highlight-color: transparent !important;
   }
   
-  /* Ensure glowing effects are always visible on touch devices */
-  .glow-effect {
-    box-shadow: 0 0 20px currentColor !important;
-    animation: continuous-glow 2s ease-in-out infinite alternate !important;
+  /* Let desktop hover/focus states work naturally on touch */
+  /* No mobile-specific overrides */
+}/* Mobile uses EXACT desktop glow - no differences */
+@media (max-width: 768px) {
+  /* Remove all mobile-specific glow modifications */
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl,
+  .shadow-blue-500\/40,
+  .shadow-green-500\/40,
+  .shadow-purple-500\/40,
+  .shadow-cyan-500\/40,
+  .shadow-orange-500\/40,
+  .shadow-red-500\/40,
+  .shadow-gray-500\/40,
+  .shadow-sky-500\/40,
+  .bg-gradient-to-r,
+  .bg-gradient-to-br,
+  .bg-gradient-to-l,
+  .bg-gradient-to-t,
+  .bg-gradient-to-b {
+    /* Use desktop styles exactly - no mobile animations */
+    animation: none !important;
   }
+  
+  /* Remove mobile-specific button modifications */
+  button,
+  .cursor-pointer,
+  [role="button"],
+  .hover\:shadow-lg,
+  .hover\:shadow-xl,
+  .hover\:shadow-2xl {
+    /* Use desktop behavior exactly */
+  }
+  
+  /* Only prevent touch interference, keep desktop glow */
+  * {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+  }
+  
+  /* Remove all mobile-specific shadow overrides - use desktop values */
+  /* Let Tailwind's original shadow classes work naturally */
 }
 
-@keyframes continuous-glow {
-  0% {
-    box-shadow: 0 0 20px currentColor;
-  }
-  100% {
-    box-shadow: 0 0 30px currentColor;
-  }
-}
+/* Mobile = Desktop: No special mobile animations or overrides */

@@ -1,24 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SkillsSection = () => {
   const [activeTab, setActiveTab] = useState('frontend');
 
-  // Ensure glowing effects persist on mobile after tab changes
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      // Force re-apply glowing effects after state change
-      setTimeout(() => {
-        const activeButton = document.querySelector(`[data-tab="${activeTab}"]`);
-        if (activeButton) {
-          activeButton.classList.add('mobile-glow-active', 'glow-effect');
-        }
-      }, 100);
-    }
-  }, [activeTab]);
+  // No mobile-specific logic - let desktop behavior work naturally
 
   const frontendSkills = [
     { 
@@ -361,16 +349,9 @@ const SkillsSection = () => {
             whileTap={{ scale: 0.95 }}
             onTouchStart={(e) => {
               e.currentTarget.style.transform = 'scale(0.95)';
-              e.currentTarget.classList.add('glow-effect');
             }}
             onTouchEnd={(e) => {
               e.currentTarget.style.transform = '';
-              // Force glowing effects to persist
-              setTimeout(() => {
-                if (activeTab === 'frontend') {
-                  e.currentTarget.classList.add('mobile-glow-active');
-                }
-              }, 100);
             }}
             onClick={() => setActiveTab('frontend')}
           >
@@ -410,16 +391,9 @@ const SkillsSection = () => {
             whileTap={{ scale: 0.95 }}
             onTouchStart={(e) => {
               e.currentTarget.style.transform = 'scale(0.95)';
-              e.currentTarget.classList.add('glow-effect');
             }}
             onTouchEnd={(e) => {
               e.currentTarget.style.transform = '';
-              // Force glowing effects to persist
-              setTimeout(() => {
-                if (activeTab === 'data') {
-                  e.currentTarget.classList.add('mobile-glow-active');
-                }
-              }, 100);
             }}
             onClick={() => setActiveTab('data')}
           >
@@ -459,16 +433,9 @@ const SkillsSection = () => {
             whileTap={{ scale: 0.95 }}
             onTouchStart={(e) => {
               e.currentTarget.style.transform = 'scale(0.95)';
-              e.currentTarget.classList.add('glow-effect');
             }}
             onTouchEnd={(e) => {
               e.currentTarget.style.transform = '';
-              // Force glowing effects to persist
-              setTimeout(() => {
-                if (activeTab === 'tools') {
-                  e.currentTarget.classList.add('mobile-glow-active');
-                }
-              }, 100);
             }}
             onClick={() => setActiveTab('tools')}
           >
