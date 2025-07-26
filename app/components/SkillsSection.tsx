@@ -1,10 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SkillsSection = () => {
   const [activeTab, setActiveTab] = useState('frontend');
+
+  // Ensure glowing effects persist on mobile after tab changes
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      // Force re-apply glowing effects after state change
+      setTimeout(() => {
+        const activeButton = document.querySelector(`[data-tab="${activeTab}"]`);
+        if (activeButton) {
+          activeButton.classList.add('mobile-glow-active', 'glow-effect');
+        }
+      }, 100);
+    }
+  }, [activeTab]);
 
   const frontendSkills = [
     { 
@@ -329,21 +343,35 @@ const SkillsSection = () => {
           {/* Glowing Border Effect */}
           <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
             activeTab === 'frontend'
-              ? 'bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600 p-[2px] shadow-lg shadow-blue-500/60 md:shadow-blue-500/40 shadow-2xl'
+              ? 'bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600 p-[2px] shadow-lg shadow-blue-500/60 md:shadow-blue-500/40 shadow-2xl glow-border-mobile'
               : 'bg-gray-700/50 md:bg-gray-700/30 p-[1px] md:hover:bg-gray-600/50'
-          }`}>
+          }`} style={activeTab === 'frontend' ? {'--tw-shadow-color': 'rgb(59 130 246 / 0.6)'} as React.CSSProperties : {}}>
             <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
           </div>
           
           {/* Frontend Button */}
           <motion.button
-            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+            data-tab="frontend"
+            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 touch-action-manipulation ${
               activeTab === 'frontend'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-white'
+                ? 'text-white mobile-button-active'
+                : 'text-gray-400 hover:text-white mobile-button-inactive'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onTouchStart={(e) => {
+              e.currentTarget.style.transform = 'scale(0.95)';
+              e.currentTarget.classList.add('glow-effect');
+            }}
+            onTouchEnd={(e) => {
+              e.currentTarget.style.transform = '';
+              // Force glowing effects to persist
+              setTimeout(() => {
+                if (activeTab === 'frontend') {
+                  e.currentTarget.classList.add('mobile-glow-active');
+                }
+              }, 100);
+            }}
             onClick={() => setActiveTab('frontend')}
           >
             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -364,21 +392,35 @@ const SkillsSection = () => {
           {/* Glowing Border Effect */}
           <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
             activeTab === 'data'
-              ? 'bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 p-[2px] shadow-lg shadow-green-500/60 md:shadow-green-500/40 shadow-2xl'
+              ? 'bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 p-[2px] shadow-lg shadow-green-500/60 md:shadow-green-500/40 shadow-2xl glow-border-mobile'
               : 'bg-gray-700/50 md:bg-gray-700/30 p-[1px] md:hover:bg-gray-600/50'
-          }`}>
+          }`} style={activeTab === 'data' ? {'--tw-shadow-color': 'rgb(34 197 94 / 0.6)'} as React.CSSProperties : {}}>
             <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
           </div>
           
           {/* Data Analysis Button */}
           <motion.button
-            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+            data-tab="data"
+            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 touch-action-manipulation ${
               activeTab === 'data'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-white'
+                ? 'text-white mobile-button-active'
+                : 'text-gray-400 hover:text-white mobile-button-inactive'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onTouchStart={(e) => {
+              e.currentTarget.style.transform = 'scale(0.95)';
+              e.currentTarget.classList.add('glow-effect');
+            }}
+            onTouchEnd={(e) => {
+              e.currentTarget.style.transform = '';
+              // Force glowing effects to persist
+              setTimeout(() => {
+                if (activeTab === 'data') {
+                  e.currentTarget.classList.add('mobile-glow-active');
+                }
+              }, 100);
+            }}
             onClick={() => setActiveTab('data')}
           >
             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -399,21 +441,35 @@ const SkillsSection = () => {
           {/* Glowing Border Effect */}
           <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
             activeTab === 'tools'
-              ? 'bg-gradient-to-r from-purple-400 via-purple-500 to-pink-600 p-[2px] shadow-lg shadow-purple-500/60 md:shadow-purple-500/40 shadow-2xl'
+              ? 'bg-gradient-to-r from-purple-400 via-purple-500 to-pink-600 p-[2px] shadow-lg shadow-purple-500/60 md:shadow-purple-500/40 shadow-2xl glow-border-mobile'
               : 'bg-gray-700/50 md:bg-gray-700/30 p-[1px] md:hover:bg-gray-600/50'
-          }`}>
+          }`} style={activeTab === 'tools' ? {'--tw-shadow-color': 'rgb(168 85 247 / 0.6)'} as React.CSSProperties : {}}>
             <div className="w-full h-full bg-gray-800/80 rounded-2xl backdrop-blur-md"></div>
           </div>
           
           {/* Tools Button */}
           <motion.button
-            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+            data-tab="tools"
+            className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 touch-action-manipulation ${
               activeTab === 'tools'
-                ? 'text-white'
-                : 'text-gray-400 hover:text-white'
+                ? 'text-white mobile-button-active'
+                : 'text-gray-400 hover:text-white mobile-button-inactive'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onTouchStart={(e) => {
+              e.currentTarget.style.transform = 'scale(0.95)';
+              e.currentTarget.classList.add('glow-effect');
+            }}
+            onTouchEnd={(e) => {
+              e.currentTarget.style.transform = '';
+              // Force glowing effects to persist
+              setTimeout(() => {
+                if (activeTab === 'tools') {
+                  e.currentTarget.classList.add('mobile-glow-active');
+                }
+              }, 100);
+            }}
             onClick={() => setActiveTab('tools')}
           >
             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

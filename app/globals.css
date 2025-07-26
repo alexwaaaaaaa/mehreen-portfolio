@@ -666,8 +666,7 @@ body {
   .project-button {
     padding: 0.5rem;
   }
-}/* Mobile
--optimized glowing effects */
+}/* Mobile-optimized glowing effects */
 @media (max-width: 768px) {
   /* Increase shadow opacity and size for mobile */
   .shadow-blue-500\/40 {
@@ -719,6 +718,18 @@ body {
   .backdrop-blur-md {
     backdrop-filter: blur(12px) saturate(180%);
   }
+  
+  /* Mobile-specific button states */
+  .mobile-button-active {
+    background: linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-to));
+    box-shadow: 0 8px 32px var(--tw-shadow-color);
+    transform: translateY(-2px);
+  }
+  
+  .mobile-button-inactive {
+    background: rgba(55, 65, 81, 0.6);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* Touch-friendly hover effects for mobile */
@@ -741,5 +752,143 @@ body {
   .hover\:shadow-cyan-500\/60:hover {
     --tw-shadow-color: rgb(6 182 212 / 0.9);
     --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  }
+  
+  /* Force glowing effects to always be visible on mobile */
+  .mobile-glow-active {
+    box-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+  }
+  
+  /* Prevent touch callouts and selections that interfere with animations */
+  .touch-action-manipulation {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Ensure active states persist after touch */
+  .touch-active:active,
+  .touch-active:focus {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Override any hover states that might interfere */
+  *:hover {
+    transform: none !important;
+  }
+  
+  /* Ensure glowing borders stay visible */
+  .glow-border-mobile {
+    box-shadow: 0 0 20px var(--tw-shadow-color), 0 0 40px var(--tw-shadow-color) !important;
+    animation: mobile-pulse 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes mobile-pulse {
+  0% {
+    box-shadow: 0 0 20px var(--tw-shadow-color), 0 0 40px var(--tw-shadow-color);
+  }
+  100% {
+    box-shadow: 0 0 25px var(--tw-shadow-color), 0 0 50px var(--tw-shadow-color);
+  }
+}
+
+/* Ensure touch events don't break animations */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+/* Com
+prehensive Mobile Touch Animation Fix */
+@media (max-width: 768px) {
+  /* Force persistent glowing animations on mobile */
+  .shadow-lg {
+    animation: mobile-glow-persist 3s ease-in-out infinite !important;
+  }
+  
+  .bg-gradient-to-r {
+    animation: gradient-pulse 2s ease-in-out infinite alternate !important;
+  }
+  
+  /* Prevent touch from disabling animations */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Ensure buttons maintain their glow after touch */
+  button, .cursor-pointer {
+    touch-action: manipulation;
+  }
+  
+  /* Force active tab styles to persist */
+  .tab-active {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.9) !important;
+    color: white !important;
+  }
+  
+  /* Ensure skill cards maintain their glow */
+  .skill-card {
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.6) !important;
+    animation: skill-glow 2s ease-in-out infinite alternate !important;
+  }
+}
+
+@keyframes mobile-glow-persist {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px currentColor);
+    box-shadow: 0 0 20px currentColor;
+  }
+  50% {
+    filter: drop-shadow(0 0 12px currentColor);
+    box-shadow: 0 0 30px currentColor;
+  }
+}
+
+@keyframes gradient-pulse {
+  0% {
+    opacity: 0.9;
+    filter: brightness(1);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1.1);
+  }
+}
+
+@keyframes skill-glow {
+  0% {
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.6);
+  }
+  100% {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.8);
+  }
+}
+
+/* Mobile-specific touch event handling */
+@media (hover: none) and (pointer: coarse) {
+  /* Override any touch states that might disable animations */
+  *:active, *:focus, *:hover {
+    animation-play-state: running !important;
+    box-shadow: inherit !important;
+  }
+  
+  /* Ensure glowing effects are always visible on touch devices */
+  .glow-effect {
+    box-shadow: 0 0 20px currentColor !important;
+    animation: continuous-glow 2s ease-in-out infinite alternate !important;
+  }
+}
+
+@keyframes continuous-glow {
+  0% {
+    box-shadow: 0 0 20px currentColor;
+  }
+  100% {
+    box-shadow: 0 0 30px currentColor;
   }
 }
