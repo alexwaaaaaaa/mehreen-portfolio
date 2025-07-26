@@ -33,50 +33,65 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         
-        {/* Mobile Touch Fix - Ensure desktop behavior works on mobile */}
-        <Script id="mobile-touch-fix" strategy="afterInteractive">
+        {/* Force Desktop Glow on Mobile */}
+        <Script id="mobile-desktop-glow" strategy="afterInteractive">
           {`
-            // Simple touch fix - just prevent touch from interfering with desktop styles
+            // Force mobile to show desktop-level glow effects
             (function() {
               if (typeof window === 'undefined') return;
               
               const isMobile = window.innerWidth <= 768;
               if (!isMobile) return;
               
-              // Simulate hover states on touch for glowing elements
-              const addTouchHover = (element) => {
-                if (!element) return;
+              // Force desktop-style glow on all interactive elements
+              const forceDesktopGlow = () => {
+                const selectors = [
+                  'button',
+                  '.cursor-pointer',
+                  '[data-tab]',
+                  '.shadow-lg',
+                  '.shadow-xl',
+                  '.shadow-2xl',
+                  '.bg-gradient-to-r',
+                  '.shadow-blue-500\\/40',
+                  '.shadow-green-500\\/40',
+                  '.shadow-purple-500\\/40',
+                  '.shadow-cyan-500\\/40'
+                ];
                 
-                element.addEventListener('touchstart', (e) => {
-                  element.classList.add('hover');
-                }, { passive: true });
-                
-                element.addEventListener('touchend', (e) => {
-                  // Keep hover state briefly to maintain glow
-                  setTimeout(() => {
-                    element.classList.remove('hover');
-                  }, 300);
-                }, { passive: true });
+                selectors.forEach(selector => {
+                  try {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(element => {
+                      // Force desktop-level glow
+                      element.style.filter = 'drop-shadow(0 0 10px currentColor)';
+                      element.style.boxShadow = element.style.boxShadow || '0 0 20px currentColor';
+                      
+                      // Add touch handlers to maintain glow
+                      element.addEventListener('touchstart', () => {
+                        element.style.filter = 'drop-shadow(0 0 15px currentColor)';
+                      }, { passive: true });
+                      
+                      element.addEventListener('touchend', () => {
+                        setTimeout(() => {
+                          element.style.filter = 'drop-shadow(0 0 10px currentColor)';
+                        }, 200);
+                      }, { passive: true });
+                    });
+                  } catch (e) {
+                    console.warn('Invalid selector:', selector);
+                  }
+                });
               };
               
-              // Apply to interactive elements
-              const selectors = [
-                'button',
-                '.cursor-pointer',
-                '[data-tab]',
-                '.shadow-lg',
-                '.shadow-xl',
-                '.shadow-2xl'
-              ];
+              // Apply immediately and on DOM changes
+              forceDesktopGlow();
               
-              selectors.forEach(selector => {
-                try {
-                  const elements = document.querySelectorAll(selector);
-                  elements.forEach(addTouchHover);
-                } catch (e) {
-                  console.warn('Invalid selector:', selector);
-                }
-              });
+              const observer = new MutationObserver(forceDesktopGlow);
+              observer.observe(document.body, { childList: true, subtree: true });
+              
+              // Re-apply periodically to ensure glow persists
+              setInterval(forceDesktopGlow, 2000);
             })();
           `}
         </Script>

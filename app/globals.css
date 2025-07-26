@@ -900,4 +900,103 @@ body {
   /* Let Tailwind's original shadow classes work naturally */
 }
 
-/* Mobile = Desktop: No special mobile animations or overrides */
+/* Mobile = Desktop: No special mobile animations or overrides *//* Force m
+obile to show desktop glow effects exactly */
+@media (max-width: 768px) {
+  /* Force all shadow classes to show their full desktop glow on mobile */
+  .shadow-blue-500\/40,
+  .hover\:shadow-blue-500\/60 {
+    --tw-shadow-color: rgb(59 130 246 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  .shadow-green-500\/40,
+  .hover\:shadow-green-500\/60 {
+    --tw-shadow-color: rgb(34 197 94 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  .shadow-purple-500\/40,
+  .hover\:shadow-purple-500\/60 {
+    --tw-shadow-color: rgb(168 85 247 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  .shadow-cyan-500\/40,
+  .hover\:shadow-cyan-500\/60 {
+    --tw-shadow-color: rgb(6 182 212 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  .shadow-orange-500\/40,
+  .hover\:shadow-orange-500\/60 {
+    --tw-shadow-color: rgb(249 115 22 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  .shadow-red-500\/40,
+  .hover\:shadow-red-500\/60 {
+    --tw-shadow-color: rgb(239 68 68 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  .shadow-gray-500\/40,
+  .hover\:shadow-gray-500\/60 {
+    --tw-shadow-color: rgb(107 114 128 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  .shadow-sky-500\/40,
+  .hover\:shadow-sky-500\/60 {
+    --tw-shadow-color: rgb(14 165 233 / 0.6) !important;
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-shadow) !important;
+  }
+  
+  /* Force gradient borders to show desktop-level glow */
+  .bg-gradient-to-r.from-blue-400,
+  .bg-gradient-to-r.from-green-400,
+  .bg-gradient-to-r.from-purple-400 {
+    box-shadow: 0 0 25px currentColor, 0 0 50px currentColor !important;
+  }
+  
+  /* Ensure all glowing elements show desktop-intensity glow */
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 20px currentColor !important;
+  }
+  
+  .shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 30px currentColor !important;
+  }
+  
+  .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 40px currentColor !important;
+  }
+}
+
+/* Force touch devices to show desktop glow immediately */
+@media (hover: none) and (pointer: coarse) {
+  /* Make all interactive elements glow like desktop hover state */
+  button,
+  .cursor-pointer,
+  [data-tab],
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl {
+    /* Force desktop hover-level glow always visible */
+    filter: drop-shadow(0 0 10px currentColor) !important;
+  }
+  
+  /* Active elements get even stronger glow */
+  .mobile-button-active,
+  [data-tab].mobile-button-active {
+    filter: drop-shadow(0 0 15px currentColor) drop-shadow(0 0 30px currentColor) !important;
+  }
+}
