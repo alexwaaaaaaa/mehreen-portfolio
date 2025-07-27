@@ -3,12 +3,13 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 
-import Navbar from './components/Navbar';
 import LoadingSpinner from './components/LoadingSpinner';
-import SkillsSection from './components/SkillsSection';
+import NoSSR from './components/NoSSR';
 import { rippleEffect } from './utils/animation';
 
-// Lazy load heavy components
+// Lazy load components to avoid hydration issues
+const Navbar = lazy(() => import('./components/Navbar'));
+const SkillsSection = lazy(() => import('./components/SkillsSection'));
 const ParticleBackground = lazy(() => import('./components/ParticleBackground'));
 const ProjectModal = lazy(() => import('./components/ProjectModal'));
 
@@ -16,6 +17,25 @@ export default function Home() {
   // For typewriter effect
   const [, setText] = useState('');
   const [index, setIndex] = useState(0);
+  
+  // Project type definition
+  type Project = {
+    title: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    demoLink?: string;
+    sourceLink?: string;
+  };
+
+  // State for project modal
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openProjectModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     const phrases = ['Frontend Developer', 'Data Analyst', 'Problem Solver', 'Tech Enthusiast'];
@@ -86,18 +106,12 @@ export default function Home() {
     sourceLink?: string;
   };
 
-  // State for project modal
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openProjectModal = (project: Project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
   return (
-    <main className="min-h-screen bg-transparent">
-      <Navbar />
+    <NoSSR fallback={<LoadingSpinner />}>
+      <main className="min-h-screen bg-transparent">
+      <Suspense fallback={<div className="fixed top-0 left-0 w-full h-16 bg-transparent z-50" />}>
+        <Navbar />
+      </Suspense>
       <Suspense fallback={<div className="fixed inset-0 bg-[var(--background)] -z-10" />}>
         <ParticleBackground />
       </Suspense>
@@ -517,7 +531,9 @@ export default function Home() {
             viewport={{ once: true }}
           />
 
-          <SkillsSection />
+          <Suspense fallback={<div className="w-full h-64 flex items-center justify-center"><LoadingSpinner /></div>}>
+            <SkillsSection />
+          </Suspense>
         </div>
       </section>
 
@@ -1212,6 +1228,7 @@ export default function Home() {
           </Suspense>
         )
       }
-    </main>
+      </main>
+    </NoSSR>
   );
 }

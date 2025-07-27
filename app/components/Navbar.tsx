@@ -4,17 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const [, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-
+      // Close mobile menu on scroll
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
       }
 
       // Track active section
@@ -39,7 +36,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { name: 'Home', href: '#hero', id: 'hero', color: 'cyan' },
