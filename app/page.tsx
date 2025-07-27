@@ -96,16 +96,6 @@ export default function Home() {
     };
   }, [index]);
 
-  // Project type definition
-  type Project = {
-    title: string;
-    description: string;
-    image: string;
-    technologies: string[];
-    demoLink?: string;
-    sourceLink?: string;
-  };
-
   return (
     <NoSSR fallback={<LoadingSpinner />}>
       <main className="min-h-screen bg-transparent">
