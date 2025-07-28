@@ -153,7 +153,7 @@ export default function Home() {
 
             {/* Name */}
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 via-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent"
+              className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-emerald-400 via-teal-500 via-cyan-500 via-blue-500 to-indigo-600 bg-clip-text text-transparent animate-pulse"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -163,7 +163,7 @@ export default function Home() {
 
             {/* Title with Gradient */}
             <motion.h2
-              className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-[var(--cyan)] via-[var(--secondary)] to-[var(--primary)] bg-clip-text text-transparent"
+              className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-pink-500 via-rose-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
