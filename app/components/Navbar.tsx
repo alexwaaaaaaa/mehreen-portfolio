@@ -109,13 +109,15 @@ const Navbar = () => {
         >
           <a
             href="#hero"
-            className={`text-xl font-bold text-white hover:${currentColors.text} transition-all duration-300`}
+            className="text-xl font-bold transition-all duration-300"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Mehreen <span className={currentColors.text}>Siddiqui</span>
+            <span className="bg-gradient-to-r from-emerald-400 via-teal-500 via-cyan-500 via-blue-500 to-indigo-600 bg-clip-text text-transparent">
+              Mehreen Siddiqui
+            </span>
           </a>
         </motion.div>
 
