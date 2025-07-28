@@ -153,7 +153,7 @@ export default function Home() {
 
             {/* Name */}
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-4 text-white"
+              className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 via-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
